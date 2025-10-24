@@ -171,6 +171,18 @@ PrefabInstance:
       propertyPath: car
       value: 
       objectReference: {fileID: 1210310470}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: tyreForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: suspension
+      value: 
+      objectReference: {fileID: 529992628}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: maximumTyreGrip
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 4972556797328537785, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: m_Name
       value: Tyre (1)
@@ -250,7 +262,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 01e701809147e4449bc31a8fd9d3b45b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -480,7 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Steering
   car: {fileID: 1210310470}
-  steeringLock: 45
+  steeringLock: 25
 --- !u!1 &255535052
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Suspension
   car: {fileID: 1210310470}
+  wheelTouchingGround: 0
   wheelRadius: 0.5
   restLength: 0.5
   springTravel: 1
@@ -667,6 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Suspension
   car: {fileID: 1210310470}
+  wheelTouchingGround: 0
   wheelRadius: 0.5
   restLength: 0.5
   springTravel: 1
@@ -1102,8 +1116,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210310470}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.26697096, z: -0, w: 0.9637046}
-  m_LocalPosition: {x: 3.07, y: 26, z: -5.11}
+  m_LocalRotation: {x: -0, y: 0.19909059, z: -0, w: 0.9799811}
+  m_LocalPosition: {x: 29.42, y: 14.25, z: 1.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1111,7 +1125,7 @@ Transform:
   - {fileID: 1765758066}
   - {fileID: 41862580}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 30.968, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 22.968, z: 0}
 --- !u!54 &1210310472
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1151,7 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85fca0461e1d49040878d9133baff679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Car
-  acceleration: 0
+  acceleration: 2000
   steeringInput: 0
 --- !u!1001 &1267288551
 PrefabInstance:
@@ -1205,6 +1219,18 @@ PrefabInstance:
       propertyPath: car
       value: 
       objectReference: {fileID: 1210310470}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: tyreForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: suspension
+      value: 
+      objectReference: {fileID: 1441433717}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: maximumTyreGrip
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 4972556797328537785, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: m_Name
       value: Tyre (1)
@@ -1386,6 +1412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Suspension
   car: {fileID: 1210310470}
+  wheelTouchingGround: 0
   wheelRadius: 0.5
   restLength: 0.5
   springTravel: 1
@@ -1469,6 +1496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Suspension
   car: {fileID: 1210310470}
+  wheelTouchingGround: 0
   wheelRadius: 0.5
   restLength: 0.5
   springTravel: 1
@@ -1546,7 +1574,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1d6b134a0b2a334ca1aa40e2ae211ad, type: 2}
+  - {fileID: 2100000, guid: d3762470a063e2b4ea732307539c5408, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1705,7 +1733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Steering
   car: {fileID: 1210310470}
-  steeringLock: 45
+  steeringLock: 25
 --- !u!1 &1812748266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,6 +1746,7 @@ GameObject:
   - component: {fileID: 1812748269}
   - component: {fileID: 1812748268}
   - component: {fileID: 1812748267}
+  - component: {fileID: 1812748271}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -1742,7 +1771,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1817,6 +1846,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1337560159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1812748271
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812748266}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.29
+  m_Height: 0.96
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2010888087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1869,6 +1921,18 @@ PrefabInstance:
       propertyPath: car
       value: 
       objectReference: {fileID: 1210310470}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: tyreForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: suspension
+      value: 
+      objectReference: {fileID: 318901593}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: maximumTyreGrip
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 4972556797328537785, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: m_Name
       value: Tyre (1)
@@ -2001,6 +2065,18 @@ PrefabInstance:
       propertyPath: car
       value: 
       objectReference: {fileID: 1210310470}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: tyreForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: suspension
+      value: 
+      objectReference: {fileID: 1411763292}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: maximumTyreGrip
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 4972556797328537785, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: m_Name
       value: Tyre

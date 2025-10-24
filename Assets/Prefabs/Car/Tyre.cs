@@ -6,15 +6,25 @@ public class Tyre : MonoBehaviour
     public GameObject car;
     private Rigidbody rb;
     public Suspension suspension;
+    private float lateralForce;
+    public float tyreForce;
+    public float maximumTyreGrip;
 
     void Start()
     {
         rb = car.GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (suspension.wheelTouchingGround)
+        {
+            float lateralVelocity = getLateralVelocity();
+            lateralForce = Mathf.Clamp(lateralVelocity * tyreForce, -maximumTyreGrip, maximumTyreGrip);
+            Debug.Log(lateralForce);
+
+            rb.AddForceAtPosition(lateralForce * -transform.right, outputForceLocation.transform.position);
+        }
     }
     
     float getLateralVelocity()

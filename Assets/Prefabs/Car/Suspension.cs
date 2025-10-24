@@ -5,6 +5,8 @@ public class Suspension : MonoBehaviour
     private Rigidbody rb;
     public GameObject car;
 
+    public bool wheelTouchingGround;
+
     public float wheelRadius;
     public float restLength;
     public float springTravel;
@@ -34,6 +36,8 @@ public class Suspension : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
         {
+            wheelTouchingGround = true;
+
             Debug.DrawRay(transform.position, -transform.up * hit.distance, Color.red);
 
             lastLength = springLength;
@@ -54,6 +58,7 @@ public class Suspension : MonoBehaviour
 
         else
         {
+            wheelTouchingGround = false;
             suspensionForce = new Vector3(0f, 0f, 0f);
         }
     }
