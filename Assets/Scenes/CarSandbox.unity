@@ -181,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 529992628}
     - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: maximumTyreGrip
-      value: 1500
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 4972556797328537785, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: m_Name
@@ -572,10 +572,10 @@ MonoBehaviour:
   car: {fileID: 1210310470}
   wheelTouchingGround: 0
   wheelRadius: 0.5
-  restLength: 0.5
+  restLength: 0.25
   springTravel: 1
-  springStiffness: 10000
-  damperStiffness: 500
+  springStiffness: 20000
+  damperStiffness: 1500
   tyre: {fileID: 194440199}
 --- !u!1001 &434741417
 PrefabInstance:
@@ -682,10 +682,10 @@ MonoBehaviour:
   car: {fileID: 1210310470}
   wheelTouchingGround: 0
   wheelRadius: 0.5
-  restLength: 0.5
+  restLength: 0.25
   springTravel: 1
-  springStiffness: 10000
-  damperStiffness: 500
+  springStiffness: 20000
+  damperStiffness: 1500
   tyre: {fileID: 1805244492}
 --- !u!1 &711075119
 GameObject:
@@ -1116,8 +1116,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210310470}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.19909059, z: -0, w: 0.9799811}
-  m_LocalPosition: {x: 29.42, y: 14.25, z: 1.81}
+  m_LocalRotation: {x: -0, y: 0.11113887, z: -0, w: 0.9938049}
+  m_LocalPosition: {x: 29.69, y: 12.26, z: -4.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1125,7 +1125,7 @@ Transform:
   - {fileID: 1765758066}
   - {fileID: 41862580}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 22.968, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 12.762, z: 0}
 --- !u!54 &1210310472
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1229,7 +1229,7 @@ PrefabInstance:
       objectReference: {fileID: 1441433717}
     - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: maximumTyreGrip
-      value: 1500
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 4972556797328537785, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: m_Name
@@ -1414,10 +1414,10 @@ MonoBehaviour:
   car: {fileID: 1210310470}
   wheelTouchingGround: 0
   wheelRadius: 0.5
-  restLength: 0.5
+  restLength: 0.25
   springTravel: 1
-  springStiffness: 10000
-  damperStiffness: 500
+  springStiffness: 20000
+  damperStiffness: 1500
   tyre: {fileID: 783269762}
 --- !u!1 &1416529559
 GameObject:
@@ -1498,10 +1498,10 @@ MonoBehaviour:
   car: {fileID: 1210310470}
   wheelTouchingGround: 0
   wheelRadius: 0.5
-  restLength: 0.5
+  restLength: 0.25
   springTravel: 1
-  springStiffness: 10000
-  damperStiffness: 500
+  springStiffness: 20000
+  damperStiffness: 1500
   tyre: {fileID: 2044905022}
 --- !u!4 &1604527200 stripped
 Transform:
@@ -1613,13 +1613,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627031021}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.046734665, w: 0.9989073}
   m_LocalPosition: {x: 28.527298, y: -0.80400085, z: -9.802222}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5.357}
 --- !u!1 &1650460078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,7 +1931,7 @@ PrefabInstance:
       objectReference: {fileID: 318901593}
     - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: maximumTyreGrip
-      value: 1500
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 4972556797328537785, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: m_Name
@@ -2075,7 +2075,7 @@ PrefabInstance:
       objectReference: {fileID: 1411763292}
     - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: maximumTyreGrip
-      value: 1500
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 4972556797328537785, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: m_Name
