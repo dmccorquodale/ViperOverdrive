@@ -21,7 +21,7 @@ public class Tyre : MonoBehaviour
         {
             float lateralVelocity = getLateralVelocity();
             lateralForce = Mathf.Clamp(lateralVelocity * tyreForce, -maximumTyreGrip, maximumTyreGrip);
-            Debug.Log(lateralForce);
+            //Debug.Log(lateralForce);
 
             rb.AddForceAtPosition(lateralForce * -transform.right, outputForceLocation.transform.position);
         }

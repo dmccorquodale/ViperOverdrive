@@ -58,6 +58,7 @@ public class Suspension : MonoBehaviour
 
         else
         {
+            Debug.Log("Wheels not on ground");
             wheelTouchingGround = false;
             suspensionForce = new Vector3(0f, 0f, 0f);
         }
