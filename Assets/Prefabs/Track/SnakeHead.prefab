@@ -232,6 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6361596545423105963}
   - component: {fileID: 1811823433713160856}
+  - component: {fileID: 2460052686220188468}
   m_Layer: 0
   m_Name: SnakeHead
   m_TagString: Untagged
@@ -276,3 +277,17 @@ MonoBehaviour:
   phaseOffset: 0.7
   maxTurnRateDegPerSec: 120
   baseY: 100
+--- !u!114 &2460052686220188468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7391874444324417106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4af945f9f02e1c48bbdc28cd4a5de60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PathSampler
+  sampleSpacing: 0.2
+  maxSamples: 4096
