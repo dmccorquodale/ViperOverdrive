@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-// using System.Diagnostics;   // ← remove this unless you really need it
 using UnityEngine;
 
 public class PathSampler : MonoBehaviour
@@ -8,10 +7,18 @@ public class PathSampler : MonoBehaviour
     public float sampleSpacing = 0.2f; // meters between path samples
     public int maxSamples = 4096;      // ring buffer
 
-    public struct Sample { public Vector3 pos; public Vector3 tangent; }
+    public struct Sample
+    {
+        public Vector3 pos;
+        public Vector3 tangent; // unit
+        public float s;         // cumulative arc length from start
+    }
 
     public readonly List<Sample> samples = new();
     private Vector3 lastPos;
+    private float lastS = 0f;
+
+    public float LatestS => samples.Count > 0 ? samples[^1].s : 0f;
 
     void Start()
     {
@@ -21,9 +28,6 @@ public class PathSampler : MonoBehaviour
 
     void Update()
     {
-        if (Time.frameCount % 30 == 0)
-            UnityEngine.Debug.Log($"PathSampler: samples={samples.Count}");
-
         float dist = Vector3.Distance(transform.position, lastPos);
         while (dist >= sampleSpacing)
         {
@@ -37,53 +41,32 @@ public class PathSampler : MonoBehaviour
     void AddSample(bool initial, Vector3? overridePos = null, Vector3? tangent = null)
     {
         Vector3 p = overridePos ?? transform.position;
-        Vector3 t = tangent ?? transform.forward;
+        Vector3 t = (tangent ?? transform.forward).normalized;
+
+        if (samples.Count > 0)
+            lastS += Vector3.Distance(p, samples[^1].pos);
 
         if (samples.Count >= maxSamples) samples.RemoveAt(0);
-        samples.Add(new Sample { pos = p, tangent = t.normalized });
+        samples.Add(new Sample { pos = p, tangent = t, s = lastS });
     }
 
-    public bool TryGetSpan(float length, out int iStart, out int iEnd, out float actualLength)
+    // Get indices that span [sStart, sEnd] along the recorded curve.
+    // Returns false if not enough data yet.
+    public bool GetSpanByS(float sStart, float sEnd, out int iStart, out int iEnd)
     {
+        iStart = iEnd = -1;
+        if (samples.Count < 2 || sEnd <= 0f) return false;
+
+        // iEnd: last index whose s <= sEnd
         iEnd = samples.Count - 1;
+        while (iEnd > 0 && samples[iEnd].s > sEnd) iEnd--;
+
+        // iStart: first index whose s >= sStart (but not after iEnd)
         iStart = iEnd;
-        actualLength = 0f;
-        if (iEnd <= 0) return false;
+        while (iStart > 0 && samples[iStart - 1].s >= sStart) iStart--;
 
-        while (iStart > 0 && actualLength < length)
-        {
-            float d = Vector3.Distance(samples[iStart].pos, samples[iStart - 1].pos);
-            actualLength += d;
-            iStart--;
-        }
-        return actualLength > 0.01f;
+        // Basic sanity
+        if (iStart < 0 || iEnd <= iStart) return false;
+        return true;
     }
-
-    void LateUpdate()
-    {
-        // Draw in Game view (requires Game-view Gizmos enabled)
-        if (samples.Count < 2) return;
-
-        float lengthShown = 0f;
-        for (int i = samples.Count - 1; i > 0; i--)
-        {
-            var p0 = samples[i - 1].pos;
-            var p1 = samples[i].pos;
-
-            UnityEngine.Debug.DrawLine(p0, p1, Color.cyan, 0f, false);
-            lengthShown += Vector3.Distance(p0, p1);
-            if (lengthShown > 10f) break; // increase if you want more
-        }
-    }
-
-#if UNITY_EDITOR
-    void OnDrawGizmos()
-    {
-        // Draw in Scene view (Editor)
-        if (samples == null || samples.Count < 2) return;
-        Gizmos.color = Color.green;
-        for (int i = 1; i < samples.Count; i++)
-            Gizmos.DrawLine(samples[i - 1].pos, samples[i].pos);
-    }
-#endif
 }
