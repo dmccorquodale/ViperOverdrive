@@ -82,6 +82,7 @@ MonoBehaviour:
   car: {fileID: 0}
   suspension: {fileID: 0}
   rearTyre: 1
+  tyreSqueelThreshold: 30000
   tyreSqueelAudio: {fileID: 124043852720108669}
 --- !u!82 &124043852720108669
 AudioSource:
