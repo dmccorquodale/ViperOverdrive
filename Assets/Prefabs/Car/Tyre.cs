@@ -11,6 +11,7 @@ public class Tyre : MonoBehaviour
     private float tyreForceClamp;
     private float rearTyreGripFactor;
     public bool rearTyre;
+    public float tyreSqueelThreshold;
 
     public AudioSource tyreSqueelAudio;
 
@@ -46,14 +47,16 @@ public class Tyre : MonoBehaviour
             Vector3 jankRotationLocation = new Vector3(outputForceLocation.transform.position.x, car.transform.position.y, outputForceLocation.transform.position.z);
             rb.AddForceAtPosition(lateralForce * -transform.right, jankRotationLocation);
 
-            Debug.DrawLine(outputForceLocation.transform.position, jankRotationLocation + ((lateralForce * -transform.right) / 500), Color.white);
+            //Debug.DrawLine(outputForceLocation.transform.position, jankRotationLocation + ((lateralForce * -transform.right) / 500), Color.white);
+            tyreSqueelAudio.volume = Mathf.Lerp(0f, 0.02f, Mathf.Abs(lateralForce) / tyreSqueelThreshold);
+            Debug.Log(lateralForce + " " + Mathf.Abs(lateralForce) / tyreSqueelThreshold);
         }
         else
         {
+            tyreSqueelAudio.volume = 0f;
             //Debug.Log("NOT touching ground");
         }
 
-        tyreSqueelAudio.volume = Mathf.Lerp(0f, 0.02f, lateralForce / 2000f);
     }
     
     float getLateralVelocity()
