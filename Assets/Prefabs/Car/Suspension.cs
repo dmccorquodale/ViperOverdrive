@@ -6,13 +6,14 @@ public class Suspension : MonoBehaviour
     public GameObject car;
 
     public bool wheelTouchingGround;
+    public GameObject tyre;
 
     public float wheelRadius;
-    public float restLength;
-    public float springTravel;
-    public float springStiffness;
-    public float damperStiffness;
-    public GameObject tyre;
+    
+    private float restLength;
+    private float springTravel;
+    private float springStiffness;
+    private float damperStiffness;
 
     private float maxLength;
     private float minLength;
@@ -28,12 +29,19 @@ public class Suspension : MonoBehaviour
     {
         rb = car.GetComponent<Rigidbody>();
 
+        springTravel = car.GetComponent<Car>().springTravel;
+        springStiffness = car.GetComponent<Car>().springStiffness;
+        damperStiffness = car.GetComponent<Car>().damperStiffness;
+        restLength = car.GetComponent<Car>().restLength;
+
         minLength = restLength - springTravel;
         maxLength = restLength + springTravel;
     }
 
     void FixedUpdate()
     {
+        Start(); // this is so I can tweak values while game is running - delete later
+
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
         {
             wheelTouchingGround = true;
@@ -58,7 +66,7 @@ public class Suspension : MonoBehaviour
 
         else
         {
-            Debug.Log("Wheels not on ground");
+            //Debug.Log("Wheels not on ground");
             wheelTouchingGround = false;
             suspensionForce = new Vector3(0f, 0f, 0f);
         }

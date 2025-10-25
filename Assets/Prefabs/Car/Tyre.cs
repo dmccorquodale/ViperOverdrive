@@ -7,21 +7,27 @@ public class Tyre : MonoBehaviour
     private Rigidbody rb;
     public Suspension suspension;
     private float lateralForce;
-    public float tyreForce;
-    public float maximumTyreGrip;
+    private float tyreForce;
+    private float tyreForceClamp;
 
     void Start()
     {
         rb = car.GetComponent<Rigidbody>();
+
+        tyreForce = car.GetComponent<Car>().tyreForce;
+        tyreForceClamp = car.GetComponent<Car>().tyreForceClamp;
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        Start(); // this is so I can tweak values while game is running - delete later
+
         if (suspension.wheelTouchingGround)
         {
             float lateralVelocity = getLateralVelocity();
-            lateralForce = Mathf.Clamp(lateralVelocity * tyreForce, -maximumTyreGrip, maximumTyreGrip);
-            //Debug.Log(lateralForce);
+            lateralForce = Mathf.Clamp(lateralVelocity * tyreForce, -tyreForceClamp, tyreForceClamp);
+            lateralForce = lateralForce * Time.deltaTime;
+            Debug.Log(lateralForce);
 
             rb.AddForceAtPosition(lateralForce * -transform.right, outputForceLocation.transform.position);
         }
