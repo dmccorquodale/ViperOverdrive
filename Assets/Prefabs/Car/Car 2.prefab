@@ -75,14 +75,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85fca0461e1d49040878d9133baff679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Car
-  acceleration: 4000
-  targetSpeedKmH: 30
+  acceleration: 24000
+  targetSpeedKmH: 70
   currentSpeedKmH: 0
   steeringLock: 45
-  tyreForce: 150000
-  tyreForceClamp: 170000
-  springStiffness: 20000
-  damperStiffness: 1500
+  tyreForce: 40000
+  tyreForceClamp: 1700000
+  rearTyreGripFactor: 2
+  springStiffness: 8000
+  damperStiffness: 1200
   restLength: 0.5
   springTravel: 1
   steeringInput: 0
@@ -148,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 2373515958717024005}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.75, y: -0.2, z: -0.8}
+  m_LocalPosition: {x: -1, y: -0.2, z: -0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -197,7 +198,7 @@ Transform:
   m_GameObject: {fileID: 3399301942309537927}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: -0.2, z: -0.8}
+  m_LocalPosition: {x: 1, y: -0.2, z: -0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -328,7 +329,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.39, y: 0.91, z: 2.45}
+  m_LocalScale: {x: 1.7119241, y: 0.91, z: 2.45}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8166338837321507485}
@@ -406,7 +407,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -427,7 +428,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.29
   m_Height: 0.96
@@ -628,7 +629,7 @@ Transform:
   m_GameObject: {fileID: 7516097014273056274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: -0.2, z: 0.8}
+  m_LocalPosition: {x: 1, y: -0.2, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -755,7 +756,7 @@ Transform:
   m_GameObject: {fileID: 9110820300324966608}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.75, y: -0.2, z: 0.8}
+  m_LocalPosition: {x: -1, y: -0.2, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -913,6 +914,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 641064987900623772}
     - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: rearTyre
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -995,6 +1000,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 641064987900623772}
     - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: rearTyre
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -1076,6 +1085,10 @@ PrefabInstance:
       propertyPath: car
       value: 
       objectReference: {fileID: 641064987900623772}
+    - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
+      propertyPath: rearTyre
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2092568273638404288, guid: f29d2f777f9f1864b997d88cde1f8be6, type: 3}
       propertyPath: m_Enabled
       value: 1
