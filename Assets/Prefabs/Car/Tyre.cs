@@ -49,7 +49,7 @@ public class Tyre : MonoBehaviour
 
             //Debug.DrawLine(outputForceLocation.transform.position, jankRotationLocation + ((lateralForce * -transform.right) / 500), Color.white);
             tyreSqueelAudio.volume = Mathf.Lerp(0f, 0.02f, Mathf.Abs(lateralForce) / tyreSqueelThreshold);
-            Debug.Log(lateralForce + " " + Mathf.Abs(lateralForce) / tyreSqueelThreshold);
+            //Debug.Log(lateralForce + " " + Mathf.Abs(lateralForce) / tyreSqueelThreshold);
         }
         else
         {
