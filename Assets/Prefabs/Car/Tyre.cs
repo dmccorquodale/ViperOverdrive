@@ -9,6 +9,8 @@ public class Tyre : MonoBehaviour
     private float lateralForce;
     private float tyreForce;
     private float tyreForceClamp;
+    private float rearTyreGripFactor;
+    public bool rearTyre;
 
     void Start()
     {
@@ -16,6 +18,12 @@ public class Tyre : MonoBehaviour
 
         tyreForce = car.GetComponent<Car>().tyreForce;
         tyreForceClamp = car.GetComponent<Car>().tyreForceClamp;
+        rearTyreGripFactor = car.GetComponent<Car>().rearTyreGripFactor;
+
+        if (rearTyre)
+        {
+            tyreForce = tyreForce * rearTyreGripFactor;
+        }
     }
 
     void FixedUpdate()

@@ -15,6 +15,7 @@ public class Car : MonoBehaviour
     public float steeringLock;
     public float tyreForce;
     public float tyreForceClamp;
+    public float rearTyreGripFactor;
 
     [Header("Suspension")]
     public float springStiffness;
