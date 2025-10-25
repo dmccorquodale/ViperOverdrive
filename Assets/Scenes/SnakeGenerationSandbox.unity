@@ -230,6 +230,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &324583623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 324583625}
+  - component: {fileID: 324583624}
+  m_Layer: 0
+  m_Name: PathSamplerGizmo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &324583624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324583623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3a968c21bad1b4f9dd4855b0316f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PathSamplerGizmos
+  sampler: {fileID: 1941364909}
+  drawEveryNth: 4
+  pointSize: 5
+  tangentLen: 1
+  lineColor: {r: 0.2, g: 1, b: 0.6, a: 1}
+  pointColor: {r: 1, g: 0.7, b: 0.2, a: 1}
+  tangentColor: {r: 0.6, g: 0.8, b: 1, a: 1}
+  highlightColor: {r: 1, g: 0.2, b: 0.9, a: 1}
+  drawPolyline: 1
+  drawPointsAndTangents: 1
+  highlightLast3m: 1
+--- !u!4 &324583625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324583623}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.33375, y: 103.91297, z: 39.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &398875202
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,12 +526,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400021766}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04889752, y: 0.2038058, z: -0.011151671, w: 0.97772586}
-  m_LocalPosition: {x: -39.2, y: 114.9, z: -11.1}
+  m_LocalRotation: {x: -0.0016194786, y: 0.99844617, z: -0.054399043, w: -0.011972413}
+  m_LocalPosition: {x: -2.3951793, y: 16.808006, z: 42.005974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1941364911}
   m_LocalEulerAnglesHint: {x: 7.94, y: 51.243, z: 6.094}
 --- !u!1 &418184571
 GameObject:
@@ -767,6 +822,7 @@ MonoBehaviour:
   maxAnglePerSegmentDeg: 8
   maxActiveSegments: 300
   gravityUpBias: 0.85
+  maxSegmentsPerFrame: 64
 --- !u!114 &546664681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2013,6 +2069,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4af945f9f02e1c48bbdc28cd4a5de60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathSampler
+--- !u!4 &1941364911 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6361596545423105963, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
+  m_PrefabInstance: {fileID: 3938403485853372367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1972473191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,7 +2407,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6361596545423105963, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 400021770}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
 --- !u!1001 &4858643837289702262
@@ -2431,4 +2495,4 @@ SceneRoots:
   - {fileID: 1199765362}
   - {fileID: 3938403485853372367}
   - {fileID: 546664679}
-  - {fileID: 400021770}
+  - {fileID: 324583625}
