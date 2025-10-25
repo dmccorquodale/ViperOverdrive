@@ -73,10 +73,15 @@ public class SegmentSpawner : MonoBehaviour
             Vector3 midTan = (s[iStart].tangent + s[iEnd].tangent).normalized;
 
             // Parallel-transport up, then stabilize with gravity
+            // transportedUp = TransportFrame.TransportUp(transportedUp, lastTangent, midTan);
+            // lastTangent = midTan;
+            // Vector3 blendedUp = Vector3.Slerp(transportedUp, Vector3.up, gravityUpBias).normalized;
+            // Quaternion rot = Quaternion.LookRotation(midTan, blendedUp);
+
+            // Keep transporting for stability, but final rotation is locked to no-roll
             transportedUp = TransportFrame.TransportUp(transportedUp, lastTangent, midTan);
             lastTangent = midTan;
-            Vector3 blendedUp = Vector3.Slerp(transportedUp, Vector3.up, gravityUpBias).normalized;
-            Quaternion rot = Quaternion.LookRotation(midTan, blendedUp);
+            Quaternion rot = TransportFrame.NoRollRotation(midTan, transportedUp);
 
             // Spawn
             var seg = pool.Get();

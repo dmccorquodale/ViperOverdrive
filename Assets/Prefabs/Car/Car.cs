@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class Car : MonoBehaviour
 {
+    public GameObject steeringWheel;
+    public AudioSource carEngineAduio;
+
     [Header("Engine")]
     public float acceleration;
     public float targetSpeedKmH;
@@ -39,7 +42,9 @@ public class Car : MonoBehaviour
 
     void Update()
     {
-        steeringInput = move.ReadValue<Vector2>().x;
+        //steeringInput = move.ReadValue<Vector2>().x;
+        steeringInput = steeringWheel.GetComponent<SteeringWheelController>().SteeringSign;
+
         //throttle = move.ReadValue<Vector2>().y;
         if (currentSpeedKmH < targetSpeedKmH)
         {
@@ -51,6 +56,8 @@ public class Car : MonoBehaviour
         }
 
         currentSpeedKmH = rb.linearVelocity.magnitude * 3.6f;
+
+        carEngineAduio.pitch = Mathf.Lerp(0.2f, 2f, currentSpeedKmH / 200f);
     }
 
     void FixedUpdate()

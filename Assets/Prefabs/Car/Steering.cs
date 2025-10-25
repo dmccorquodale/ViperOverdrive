@@ -20,9 +20,9 @@ public class Steering : MonoBehaviour
 
         steeringAmount = car.GetComponent<Car>().steeringInput * steeringLock;
 
-        float steeringAmountLimitFactor = (100 - car.GetComponent<Car>().currentSpeedKmH) / 100;
+        float steeringAmountLimitFactor = (150 - car.GetComponent<Car>().currentSpeedKmH) / 100;
         steeringAmountLimitFactor = Mathf.Clamp(steeringAmountLimitFactor, 0, 1);
-        Debug.Log(steeringAmountLimitFactor);
+        //Debug.Log(steeringAmountLimitFactor);
 
         steeringOutput = Quaternion.Euler(transform.localRotation.x, transform.localRotation.y + (steeringAmount * steeringAmountLimitFactor), transform.localRotation.z);
 

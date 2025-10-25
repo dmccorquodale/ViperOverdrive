@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SnakeHeadController : MonoBehaviour
 {
+
+    private Vector3 startPos;
     [Header("Forward Motion")]
     public float forwardSpeed = 20f;
 
@@ -31,7 +33,9 @@ public class SnakeHeadController : MonoBehaviour
 
     void Start()
     {
-        // Randomize where in the sine wave we start (0 to 2π)
+        // Remember where the snake actually started in the scene
+        startPos = transform.position;
+
         lateralPhase = Random.Range(0f, Mathf.PI * 2f);
         verticalPhase = Random.Range(0f, Mathf.PI * 2f);
     }
@@ -50,8 +54,8 @@ public class SnakeHeadController : MonoBehaviour
         float y = baseY + verticalAmp * Mathf.Sin(kVert * sMeters + verticalPhase + phaseOffset);
         float z = sMeters;
 
-        Vector3 newPos = new Vector3(x, y, z);
-
+        Vector3 newPos = startPos + new Vector3(x, y - baseY, z);
+        
         if (!initialized)
         {
             transform.position = newPos;
