@@ -5,6 +5,7 @@ public class Car : MonoBehaviour
 {
     public GameObject steeringWheel;
     public AudioSource carEngineAduio;
+    public bool engineOn;
 
     [Header("Engine")]
     public float acceleration;
@@ -38,6 +39,8 @@ public class Car : MonoBehaviour
         {
             move = InputSystem.actions.FindAction("Player/Move");
         }
+
+        engineOn = false;
     }
 
     void Update()
@@ -46,13 +49,20 @@ public class Car : MonoBehaviour
         steeringInput = steeringWheel.GetComponent<SteeringWheelController>().SteeringSign;
 
         //throttle = move.ReadValue<Vector2>().y;
-        if (currentSpeedKmH < targetSpeedKmH)
+        if (engineOn)
         {
-            throttle = 1;
+            if (currentSpeedKmH < targetSpeedKmH)
+            {
+                throttle = 1f;
+            }
+            else
+            {
+                throttle = 0f;
+            }
         }
         else
         {
-            throttle = 0;
+            throttle = 0f;
         }
 
         currentSpeedKmH = rb.linearVelocity.magnitude * 3.6f;
@@ -63,5 +73,10 @@ public class Car : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(transform.forward * acceleration * throttle);
+    }
+
+    public void Go()
+    {
+        engineOn = true;
     }
 }
