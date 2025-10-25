@@ -11,7 +11,7 @@ public class SnakeHeadController : MonoBehaviour
 
     [Header("Up/Down Wave (Y)")]
     public float verticalAmp = 8f;
-    public float verticalWavelengthM = 200f;
+    public float verticalWavelengthM = 340f;
     public float phaseOffset = 0.7f;
 
     [Header("Turn Limiting")]
