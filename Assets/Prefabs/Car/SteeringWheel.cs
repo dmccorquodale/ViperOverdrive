@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class SteeringWheelController : MonoBehaviour
 {
-    [SerializeField] private float steeringSpeed = 2f;    // How fast the wheel moves
-    [SerializeField] private float maxRotation = 180f;    // Max rotation in degrees
-    private float steering = 0.5f;                        // Normalized steering (0=full left,1=full right)
+    [SerializeField] private float rotationSpeed = 180f; // degrees per second
 
     void Update()
     {
@@ -16,12 +14,14 @@ public class SteeringWheelController : MonoBehaviour
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             input = 1f;
 
-        // Update normalized steering
-        steering += input * steeringSpeed * Time.deltaTime;
-        steering = Mathf.Clamp01(steering);
+        // Mouse input (optional)
+        float mouseInput = Input.GetAxis("Mouse X"); // -1 to 1
+        input += mouseInput;
 
-        // Rotate the wheel mesh based on steering
-        float wheelRotation = Mathf.Lerp(-maxRotation/2f, maxRotation/2f, steering);
-        transform.localRotation = Quaternion.Euler(0f, 0f, wheelRotation);
+        // Only rotate if there is input
+        if (Mathf.Abs(input) > 0.01f)
+        {
+            transform.Rotate(0f, 0f, input * rotationSpeed * Time.deltaTime, Space.Self);
+        }
     }
 }
