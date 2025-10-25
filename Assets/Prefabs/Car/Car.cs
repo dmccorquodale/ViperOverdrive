@@ -40,7 +40,7 @@ public class Car : MonoBehaviour
             move = InputSystem.actions.FindAction("Player/Move");
         }
 
-        engineOn = false;
+        engineOn = true;
     }
 
     void Update()
