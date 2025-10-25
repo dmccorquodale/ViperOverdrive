@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Car
   steeringWheel: {fileID: 269809520297006619}
   carEngineAduio: {fileID: 5428898527609741243}
+  engineOn: 0
   acceleration: 24000
   targetSpeedKmH: 50
   currentSpeedKmH: 0
@@ -868,13 +869,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5224680934810877588}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.251, z: -0.033}
+  m_LocalRotation: {x: 0.08757288, y: 0.0010738294, z: -0.0021323632, w: 0.9961553}
+  m_LocalPosition: {x: 0, y: 0.501, z: -0.022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7913994948065436819}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 10.048, y: 0.103, z: -0.236}
 --- !u!20 &91108276655926300
 Camera:
   m_ObjectHideFlags: 0
