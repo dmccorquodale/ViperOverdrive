@@ -78,6 +78,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tyre
   outputForceLocation: {fileID: 1891190184048701771}
+  car: {fileID: 0}
+  suspension: {fileID: 0}
+  rearTyre: 1
 --- !u!1 &7087030792946758007
 GameObject:
   m_ObjectHideFlags: 0
