@@ -75,12 +75,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85fca0461e1d49040878d9133baff679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Car
-  acceleration: 2000
-  targetSpeedKmH: 50
+  acceleration: 4000
+  targetSpeedKmH: 30
   currentSpeedKmH: 0
   steeringLock: 45
-  tyreForce: 50000
-  tyreForceClamp: 700000
+  tyreForce: 150000
+  tyreForceClamp: 170000
   springStiffness: 20000
   damperStiffness: 1500
   restLength: 0.5
