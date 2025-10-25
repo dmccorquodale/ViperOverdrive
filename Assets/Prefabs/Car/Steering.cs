@@ -15,7 +15,7 @@ public class Steering : MonoBehaviour
     void Update()
     {
         Start(); // this is so I can tweak values while game is running - delete later
-        
+
         steeringAmount = car.GetComponent<Car>().steeringInput * steeringLock;
         steeringOutput = Quaternion.Euler(transform.localRotation.x, transform.localRotation.y + steeringAmount, transform.localRotation.z);
 

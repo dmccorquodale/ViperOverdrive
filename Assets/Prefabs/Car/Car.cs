@@ -5,6 +5,8 @@ public class Car : MonoBehaviour
 {
     [Header("Engine")]
     public float acceleration;
+    public float targetSpeedKmH;
+    public float currentSpeedKmH;
     private Rigidbody rb;
 
     InputAction move;
@@ -37,7 +39,17 @@ public class Car : MonoBehaviour
     void Update()
     {
         steeringInput = move.ReadValue<Vector2>().x;
-        throttle = move.ReadValue<Vector2>().y;
+        //throttle = move.ReadValue<Vector2>().y;
+        if (currentSpeedKmH < targetSpeedKmH)
+        {
+            throttle = 1;
+        }
+        else
+        {
+            throttle = 0;
+        }
+
+        currentSpeedKmH = rb.linearVelocity.magnitude * 3.6f;
     }
 
     void FixedUpdate()
