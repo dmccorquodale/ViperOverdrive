@@ -1,11 +1,15 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class LevelManager : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField] private GameObject playerPrefab;
+
+    [Header("Car")]
+    [SerializeField] private Car Car;
 
     [Header("TrackRoot")]
     [SerializeField] private GameObject trackRoot;
@@ -17,44 +21,52 @@ public class LevelManager : MonoBehaviour
     public GameObject PlayerInstance { get; private set; }
     public Transform SpawnPoint => spawnPoint;
 
+    [Header("Camera")]
+    [SerializeField] private GameObject mainCamera;
+
     void Awake()
     {
-        if (levelTimer == null)
-            levelTimer = FindObjectOfType<LevelTimer>();
+        // if (levelTimer == null)
+            // levelTimer = FindObjectOfType<LevelTimer>();
     }
 
     void Start()
     {
-        StartCoroutine(SpawnPlayerDelayed(0.5f));
+        StartCoroutine(SpawnPlayerDelayed(3f));
     }
 
     public void SetSpawnPoint(Transform newSpawn)
     {
         // Create an empty object at the offset
         GameObject offsetSpawn = new GameObject("SpawnPoint_Offset");
-        offsetSpawn.transform.position = newSpawn.position + Vector3.up * 8f;
+        offsetSpawn.transform.position = newSpawn.position + Vector3.up * 10.5f;
         offsetSpawn.transform.rotation = newSpawn.rotation;
         offsetSpawn.transform.SetParent(newSpawn); // optional
 
         spawnPoint = offsetSpawn.transform;
     }
 
-    public void SpawnPlayer()
+   public void SpawnPlayer()
     {
-        Debug.Log("Spawning player");
         Transform firstSegment = trackRoot.transform.GetChild(0);
         SetSpawnPoint(firstSegment);
 
-        // Reuse existing or instantiate new
+
+        // Instantiate
+        Destroy(mainCamera);
         PlayerInstance = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
-        // if (PlayerInstance == null)
-        // {
-        //     // WirePlayer(PlayerInstance);
-        // }
-        // // else
-        // // {
-        // // }
-        // 
+
+        // Get the Car component and call Go()
+        Car = PlayerInstance.GetComponent<Car>();
+        if (Car == null)
+        {
+            Debug.LogError("LevelManager: Spawned playerPrefab has no Car component.");
+            return;
+        }
+        Car.Go();
+
+        // Optionally wire up other bits
+        // WirePlayer(PlayerInstance);
         // MovePlayerToSpawn(PlayerInstance);
     }
 
