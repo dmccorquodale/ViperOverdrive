@@ -77,25 +77,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb7eb132451c154d8b271a74377402c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SteeringWheelController
-  rotationSpeed: 180
-  steeringAction:
-    m_Name: Steering
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: c09bf644-1057-46b6-98b5-b1ca95817124
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  mouseAction:
-    m_Name: Mouse
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 505e5cf4-9858-474c-bbda-ecb615e44010
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
+  wheelTransform: {fileID: 0}
+  localSpinAxis: {x: 1, y: 0, z: 0}
+  invert: 0
+  maxWheelAngle: 200
+  rotateSmooth: 20
+  steerAxis: {fileID: -7582355604591327790, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &7087030792946758007
 GameObject:
   m_ObjectHideFlags: 0
