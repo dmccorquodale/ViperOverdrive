@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class Car : MonoBehaviour
 {
     public GameObject steeringWheel;
+    public AudioSource carEngineAduio;
 
     [Header("Engine")]
     public float acceleration;
@@ -55,6 +56,8 @@ public class Car : MonoBehaviour
         }
 
         currentSpeedKmH = rb.linearVelocity.magnitude * 3.6f;
+
+        carEngineAduio.pitch = Mathf.Lerp(0.2f, 2f, currentSpeedKmH / 200f);
     }
 
     void FixedUpdate()

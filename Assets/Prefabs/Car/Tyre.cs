@@ -12,6 +12,8 @@ public class Tyre : MonoBehaviour
     private float rearTyreGripFactor;
     public bool rearTyre;
 
+    public AudioSource tyreSqueelAudio;
+
     void Start()
     {
         rb = car.GetComponent<Rigidbody>();
@@ -50,6 +52,8 @@ public class Tyre : MonoBehaviour
         {
             //Debug.Log("NOT touching ground");
         }
+
+        tyreSqueelAudio.volume = Mathf.Lerp(0f, 0.02f, lateralForce / 2000f);
     }
     
     float getLateralVelocity()
