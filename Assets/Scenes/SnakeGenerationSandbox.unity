@@ -2536,6 +2536,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 472519928}
     - target: {fileID: 1475473541796165166, guid: dd58a8148a0cda041bfa0d28fde47466, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1415377267}
+    - target: {fileID: 1475473541796165166, guid: dd58a8148a0cda041bfa0d28fde47466, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 0}
