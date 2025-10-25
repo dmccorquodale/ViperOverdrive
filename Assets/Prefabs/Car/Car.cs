@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Car : MonoBehaviour
 {
+    public GameObject steeringWheel;
+
     [Header("Engine")]
     public float acceleration;
     public float targetSpeedKmH;
@@ -39,7 +41,9 @@ public class Car : MonoBehaviour
 
     void Update()
     {
-        steeringInput = move.ReadValue<Vector2>().x;
+        //steeringInput = move.ReadValue<Vector2>().x;
+        steeringInput = steeringWheel.GetComponent<SteeringWheelController>().SteeringSign;
+
         //throttle = move.ReadValue<Vector2>().y;
         if (currentSpeedKmH < targetSpeedKmH)
         {
