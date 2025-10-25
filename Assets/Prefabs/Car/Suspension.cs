@@ -46,7 +46,7 @@ public class Suspension : MonoBehaviour
         {
             wheelTouchingGround = true;
 
-            Debug.DrawRay(transform.position, -transform.up * hit.distance, Color.red);
+            //Debug.DrawRay(transform.position, -transform.up * hit.distance, Color.red);
 
             lastLength = springLength;
 
@@ -58,10 +58,14 @@ public class Suspension : MonoBehaviour
             springVelocity = (lastLength - springLength) / Time.fixedDeltaTime;
             damperForce = damperStiffness * springVelocity;
 
-            suspensionForce = (springForce + damperForce) * transform.up;
+            float upDot = Vector3.Dot(Vector3.up, transform.up);
+
+            suspensionForce = (springForce + damperForce) * transform.up * upDot;            
 
             tyre.transform.position = new Vector3(hit.point.x, hit.point.y + wheelRadius, hit.point.z);
             rb.AddForceAtPosition(suspensionForce, transform.position);
+
+            //Debug.DrawLine(transform.position, suspensionForce / 5000 + transform.position , Color.white);
         }
 
         else

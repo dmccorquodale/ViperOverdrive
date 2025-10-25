@@ -18,7 +18,7 @@ public class Tyre : MonoBehaviour
         tyreForceClamp = car.GetComponent<Car>().tyreForceClamp;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Start(); // this is so I can tweak values while game is running - delete later
 
@@ -26,10 +26,21 @@ public class Tyre : MonoBehaviour
         {
             float lateralVelocity = getLateralVelocity();
             lateralForce = Mathf.Clamp(lateralVelocity * tyreForce, -tyreForceClamp, tyreForceClamp);
+            //Debug.Log(lateralForce);
+            //lateralForce = lateralForce;
             lateralForce = lateralForce * Time.deltaTime;
-            Debug.Log(lateralForce);
 
-            rb.AddForceAtPosition(lateralForce * -transform.right, outputForceLocation.transform.position);
+            //rb.AddForceAtPosition(lateralForce * -transform.right, outputForceLocation.transform.position);
+
+            //new jank place to turn car from
+            Vector3 jankRotationLocation = new Vector3(outputForceLocation.transform.position.x, car.transform.position.y, outputForceLocation.transform.position.z);
+            rb.AddForceAtPosition(lateralForce * -transform.right, jankRotationLocation);
+
+            Debug.DrawLine(outputForceLocation.transform.position, jankRotationLocation + ((lateralForce * -transform.right) / 500), Color.white);
+        }
+        else
+        {
+            //Debug.Log("NOT touching ground");
         }
     }
     
