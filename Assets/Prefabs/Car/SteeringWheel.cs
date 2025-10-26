@@ -69,6 +69,7 @@ public class SteeringWheelController : MonoBehaviour
     private void Update()
     {
         float input = steerAxis ? steerAxis.action.ReadValue<float>() : 0f;
+        input = 0f;
         float dt = Time.deltaTime;
 
         // ---------- Mouse drag & fling capture ----------
