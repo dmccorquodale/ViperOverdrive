@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
 
     [Header("Car")]
-    [SerializeField] private Car Car;
+    [SerializeField] private Car car;
 
     [Header("Snake")]
     [SerializeField] private GameObject snakeHead;
@@ -35,6 +35,10 @@ public class LevelManager : MonoBehaviour
 
     [Header("Flow")]
     public string returnScene = "MainMenu";
+
+    // Seconds the car has before it'll game over at < gameOverSpeed
+    private float graceTime = 5f;
+    private float gameOverSpeed = 10f;
 
 
     void OnEnable()  => GameEvents.PlayerCrashed += OnPlayerCrashed;
@@ -60,18 +64,14 @@ public class LevelManager : MonoBehaviour
         }
 
         float time = levelTimer.GetTime();
-        SnakeHeadController shc = snakeHead.GetComponent<SnakeHeadController>();
+        UpdateSpeeds(time);
+        UpdateCarUITimer(time);
 
-        if (Car == null) return;
-        if (time <= 5f)
-        {
-            Car.targetSpeedKmH = 30f;
-            shc.forwardSpeed = 12f;
-            return;
-        }
+        if (time > graceTime) CarUnderGameOverSpeed();
 
-        Car.targetSpeedKmH = time + 25f;
-        shc.forwardSpeed = time / 4f + 10.8f;
+        
+
+
     }
 
     public void SetSpawnPoint(Transform newSpawn)
@@ -96,13 +96,13 @@ public class LevelManager : MonoBehaviour
         PlayerInstance = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
 
         // Get the Car component and call Go()
-        Car = PlayerInstance.GetComponent<Car>();
-        if (Car == null)
+        car = PlayerInstance.GetComponent<Car>();
+        if (car == null)
         {
             Debug.LogError("LevelManager: Spawned playerPrefab has no Car component.");
             return;
         }
-        Car.Go();
+        car.Go();
 
         // Optionally wire up other bits
         // WirePlayer(PlayerInstance);
@@ -161,6 +161,17 @@ public class LevelManager : MonoBehaviour
         // Return to menu (or load a GameOver scene if you add one)
         SceneManager.LoadScene(returnScene, LoadSceneMode.Single);
     }
+
+    private void OnPlayerStop()
+    {
+        if (gameOver == true) return;
+        // Debug.Log($"Game Over at {pos}");
+        gameOver = true;
+        levelTimer.OnPlayerDied();
+
+        // Return to menu (or load a GameOver scene if you add one)
+        SceneManager.LoadScene(returnScene, LoadSceneMode.Single);
+    }
     public void ReturnToMainMenu()
     {
         // Optional: stop timer, clean up, etc.
@@ -169,5 +180,36 @@ public class LevelManager : MonoBehaviour
 
         // Debug.Log("Returning to Main Menu...");
         SceneManager.LoadScene(returnScene, LoadSceneMode.Single);
+    }
+
+    private void UpdateSpeeds(float time)
+    {
+        if (car == null) return;
+        SnakeHeadController shc = snakeHead.GetComponent<SnakeHeadController>();
+        if (time <= 5f)
+        {
+            car.targetSpeedKmH = 30f;
+            shc.forwardSpeed = 12f;
+            return;
+        }
+
+        car.targetSpeedKmH = time + 25f;
+        shc.forwardSpeed = time / 4f + 10.8f;
+        
+    }
+
+    private void UpdateCarUITimer(float time)
+    {
+        if (car == null) return;
+        car.UpdateTimer(time);
+    }
+
+    private void CarUnderGameOverSpeed()
+    {
+        if (car == null) return;
+        if(car.currentSpeedKmH < gameOverSpeed)
+        {
+            OnPlayerStop();
+        }
     }
 }

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,11 @@ public class Car : MonoBehaviour
 {
     public GameObject steeringWheel;
     public AudioSource carEngineAduio;
+
+    public TMPro.TextMeshProUGUI timerText;
+    public TMPro.TextMeshProUGUI speedText;
+    public float speedUpdateDelayByFrames = 60f;
+    private float updateSpeedCounter = 0f;
     public bool engineOn;
     public GameObject[] suspensions;
 
@@ -69,6 +75,8 @@ public class Car : MonoBehaviour
         currentSpeedKmH = rb.linearVelocity.magnitude * 3.6f;
 
         carEngineAduio.pitch = Mathf.Lerp(0.2f, 2f, currentSpeedKmH / 200f);
+
+        UpdateSpeedText();
     }
 
     void FixedUpdate()
@@ -92,5 +100,30 @@ public class Car : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void UpdateTimer(float time)
+    {
+        if (time > 0)
+        {
+            int hours = Mathf.FloorToInt(time / 3600f);
+            int minutes = Mathf.FloorToInt((time % 3600f) / 60f);
+            int seconds = Mathf.FloorToInt(time % 60f);
+            int milliseconds = Mathf.FloorToInt((time * 1000f) % 1000f);
+            timerText.text = $"{hours:00}:{minutes:00}:{seconds:00}:{milliseconds:000}";
+        }
+    }
+
+    public void UpdateSpeedText()
+    {
+        Debug.Log(updateSpeedCounter);
+        if (updateSpeedCounter >= speedUpdateDelayByFrames)
+        {
+            speedText.text = $"KMs: {currentSpeedKmH:00}";
+            updateSpeedCounter = 0f;
+        } else
+        {
+            updateSpeedCounter += 1f;
+        }
     }
 }
