@@ -116,7 +116,7 @@ public class Car : MonoBehaviour
 
     public void UpdateSpeedText()
     {
-        Debug.Log(updateSpeedCounter);
+        // Debug.Log(updateSpeedCounter);
         if (updateSpeedCounter >= speedUpdateDelayByFrames)
         {
             speedText.text = $"KMs: {currentSpeedKmH:00}";
