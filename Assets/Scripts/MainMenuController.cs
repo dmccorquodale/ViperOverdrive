@@ -79,8 +79,10 @@ public class MainMenuController : MonoBehaviour
 
     static string FormatTime(float seconds)
     {
-        int m = Mathf.FloorToInt(seconds / 60f);
-        int s = Mathf.FloorToInt(seconds % 60f);
-        return $"{m:00}:{s:00}";
+        int hours = Mathf.FloorToInt(seconds / 3600f);
+        int minutes = Mathf.FloorToInt((seconds % 3600f) / 60f);
+        int secs = Mathf.FloorToInt(seconds % 60f);
+        int milliseconds = Mathf.FloorToInt((seconds * 1000f) % 1000f);
+        return $"{hours:00}:{minutes:00}:{secs:00}:{milliseconds:000}";
     }
 }

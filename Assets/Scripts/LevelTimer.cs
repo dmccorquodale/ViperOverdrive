@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelTimer : MonoBehaviour
 {
@@ -12,10 +11,17 @@ public class LevelTimer : MonoBehaviour
     [Header("Flow")]
     public string returnScene = "MainMenu";
 
-    void OnEnable()
+    // Call this manually when ready (e.g., after player spawns)
+    public void StartTimer()
     {
         _startTime = Time.time;
         _running = true;
+    }
+
+    // Optionally allow pausing/stopping
+    public void StopTimer()
+    {
+        _running = false;
     }
 
     void Update()
@@ -33,17 +39,12 @@ public class LevelTimer : MonoBehaviour
         }
     }
 
-
-    // Call this when the player dies.
     public void OnPlayerDied()
     {
         if (!_running) return;
-        _running = false;
 
+        _running = false;
         float total = Time.time - _startTime;
         GameController.Instance?.TrySubmitScore(total);
-
-        // Return to menu (or load a GameOver scene if you add one)
-        SceneManager.LoadScene(returnScene, LoadSceneMode.Single);
     }
 }

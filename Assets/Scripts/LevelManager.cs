@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.InputSystem;
+
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -21,8 +24,17 @@ public class LevelManager : MonoBehaviour
     public GameObject PlayerInstance { get; private set; }
     public Transform SpawnPoint => spawnPoint;
 
+    private bool gameOver = false;
+
     [Header("Camera")]
     [SerializeField] private GameObject mainCamera;
+
+    [Header("Flow")]
+    public string returnScene = "MainMenu";
+
+
+    void OnEnable()  => GameEvents.PlayerCrashed += OnPlayerCrashed;
+    void OnDisable() => GameEvents.PlayerCrashed -= OnPlayerCrashed;
 
     void Awake()
     {
@@ -32,7 +44,16 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        gameOver = false;
         StartCoroutine(SpawnPlayerDelayed(3f));
+    }
+
+    void Update()
+    {
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            ReturnToMainMenu();
+        }
     }
 
     public void SetSpawnPoint(Transform newSpawn)
@@ -74,6 +95,7 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         SpawnPlayer();
+        levelTimer.StartTimer();
     }
 
     void WirePlayer(GameObject player)
@@ -109,5 +131,25 @@ public class LevelManager : MonoBehaviour
             levelTimer.OnPlayerDied();
         else
             Debug.LogWarning("LevelManager: LevelTimer missing when handling death.");
+    }
+
+    private void OnPlayerCrashed(GameObject player, Vector3 pos)
+    {
+        if (gameOver == true) return;
+        // Debug.Log($"Game Over at {pos}");
+        gameOver = true;
+        levelTimer.OnPlayerDied();
+
+        // Return to menu (or load a GameOver scene if you add one)
+        SceneManager.LoadScene(returnScene, LoadSceneMode.Single);
+    }
+    public void ReturnToMainMenu()
+    {
+        // Optional: stop timer, clean up, etc.
+        if (levelTimer != null)
+            levelTimer.OnPlayerDied();
+
+        // Debug.Log("Returning to Main Menu...");
+        SceneManager.LoadScene(returnScene, LoadSceneMode.Single);
     }
 }
