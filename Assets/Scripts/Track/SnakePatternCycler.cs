@@ -163,15 +163,15 @@ public class SnakePatternCycler : MonoBehaviour
 
     void ApplyToTarget(SnakePatternPreset p)
     {
-        Debug.Log($"[Cycler] Applying preset: {p.name} " +
-                $"speed={p.speed} latAmp={p.lateralAmp} latWave={p.lateralWavelengthM} " +
-                $"vertAmp={p.verticalAmp} vertWave={p.verticalWavelengthM}", this);
+        // Debug.Log($"[Cycler] Applying preset: {p.name} " +
+        //         $"speed={p.speed} latAmp={p.lateralAmp} latWave={p.lateralWavelengthM} " +
+        //         $"vertAmp={p.verticalAmp} vertWave={p.verticalWavelengthM}", this);
 
         target.ApplyPattern(p.speed, p.lateralAmp, p.lateralWavelengthM, p.verticalAmp, p.verticalWavelengthM);
 
-        Debug.Log($"[Head] Now: " +
-                $"speed={target.forwardSpeed} latAmp={target.lateralAmp} latWave={target.lateralWavelengthM} " +
-                $"vertAmp={target.verticalAmp} vertWave={target.verticalWavelengthM}", target);
+        // Debug.Log($"[Head] Now: " +
+        //         $"speed={target.forwardSpeed} latAmp={target.lateralAmp} latWave={target.lateralWavelengthM} " +
+        //         $"vertAmp={target.verticalAmp} vertWave={target.verticalWavelengthM}", target);
     }
 
     bool PresetsApproximatelyEqual(SnakePatternPreset a, SnakePatternPreset b, float eps = 1e-3f)
