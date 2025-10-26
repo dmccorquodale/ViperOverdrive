@@ -95,7 +95,7 @@ MonoBehaviour:
   dragDegreesPerPixel: 0.25
   releaseInertia: 1
   invertDrag: 1
-  invertKeys: 1
+  invertKeys: 0
 --- !u!65 &7748174116231992659
 BoxCollider:
   m_ObjectHideFlags: 0
