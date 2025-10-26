@@ -24,6 +24,8 @@ public class MainMenuController : MonoBehaviour
             startAction.AddBinding("<Keyboard>/enter");
             startAction.AddBinding("<Gamepad>/buttonSouth"); // A / Cross
             startAction.AddBinding("<Gamepad>/start");
+
+            // Enabled to click anywhere to start.
             startAction.AddBinding("<Mouse>/leftButton"); 
         }
 
@@ -85,5 +87,10 @@ public class MainMenuController : MonoBehaviour
         int secs = Mathf.FloorToInt(seconds % 60f);
         int milliseconds = Mathf.FloorToInt((seconds * 1000f) % 1000f);
         return $"{hours:00}:{minutes:00}:{secs:00}:{milliseconds:000}";
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(levelToLoad, LoadSceneMode.Single);
     }
 }
