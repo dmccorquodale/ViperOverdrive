@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
-    }
+        var all = FindObjectsByType<AudioManager>(FindObjectsSortMode.None);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (all.Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }
