@@ -81,11 +81,14 @@ MonoBehaviour:
   wheelTransform: {fileID: 0}
   localSpinAxis: {x: 1, y: 0, z: 0}
   invertVisual: 1
-  maxWheelAngle: 200
-  torquePerInput: 600
-  damping: 4
+  maxWheelAngle: 1000
+  momentOfInertia: 1500
+  inputDamping: 0.6
+  freeSpinDamping: 0.02
   centerSpring: 0
-  stopFriction: 20
+  stopFriction: 0
+  maxAngVel: 1200
+  torquePerInput: 600
   rotateSmooth: 20
   steerAxis: {fileID: -7582355604591327790, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   inputCamera: {fileID: 0}
@@ -95,6 +98,9 @@ MonoBehaviour:
   dragDegreesPerPixel: 0.25
   releaseInertia: 1
   invertDrag: 1
+  injectGainWhileDragging: 0.75
+  flingGain: 100
+  flingAverageTime: 100
 --- !u!65 &7748174116231992659
 BoxCollider:
   m_ObjectHideFlags: 0
