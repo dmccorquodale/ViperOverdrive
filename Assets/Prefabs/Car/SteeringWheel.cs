@@ -70,6 +70,7 @@ public class SteeringWheelController : MonoBehaviour
 
             if (dragging)
             {
+                
                 float dx = Mouse.current.delta.ReadValue().x;
 
                 // drag direction follows visual flip, so A/D and drag match visually
@@ -112,7 +113,9 @@ public class SteeringWheelController : MonoBehaviour
                              out var hit, 1000f, wheelMask))
             return false;
 
-        return hit.transform == wheelTransform || hit.transform.IsChildOf(wheelTransform);
+        //Debug.Log("Hit: " + hit.collider.gameObject.name);
+        //return hit.transform == wheelTransform || hit.transform.IsChildOf(wheelTransform);
+        return true;
     }
 
     // Outputs for the car (unaffected by visual or drag inversion)
