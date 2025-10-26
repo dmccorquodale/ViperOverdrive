@@ -87,7 +87,7 @@ MonoBehaviour:
   - {fileID: 2373515958717024005}
   - {fileID: 3399301942309537927}
   acceleration: 24000
-  targetSpeedKmH: 50
+  targetSpeedKmH: 20
   currentSpeedKmH: 0
   steeringLock: 45
   tyreForce: 40000
@@ -1477,12 +1477,36 @@ PrefabInstance:
       value: steeringWheel (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8104161659577560956, guid: 3e2cdb8d48b8e493097737b751a9ba81, type: 3}
+      propertyPath: flingGain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104161659577560956, guid: 3e2cdb8d48b8e493097737b751a9ba81, type: 3}
       propertyPath: inputCamera
       value: 
       objectReference: {fileID: 91108276655926300}
     - target: {fileID: 8104161659577560956, guid: 3e2cdb8d48b8e493097737b751a9ba81, type: 3}
+      propertyPath: inputDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104161659577560956, guid: 3e2cdb8d48b8e493097737b751a9ba81, type: 3}
       propertyPath: maxWheelAngle
-      value: 2000
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104161659577560956, guid: 3e2cdb8d48b8e493097737b751a9ba81, type: 3}
+      propertyPath: freeSpinDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104161659577560956, guid: 3e2cdb8d48b8e493097737b751a9ba81, type: 3}
+      propertyPath: flingAverageTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104161659577560956, guid: 3e2cdb8d48b8e493097737b751a9ba81, type: 3}
+      propertyPath: dragDegreesPerPixel
+      value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104161659577560956, guid: 3e2cdb8d48b8e493097737b751a9ba81, type: 3}
+      propertyPath: injectGainWhileDragging
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
