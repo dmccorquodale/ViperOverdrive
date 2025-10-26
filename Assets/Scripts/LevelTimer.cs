@@ -47,4 +47,9 @@ public class LevelTimer : MonoBehaviour
         float total = Time.time - _startTime;
         GameController.Instance?.TrySubmitScore(total);
     }
+
+    public float GetTime()
+    {
+        return Time.time - _startTime;
+    }
 }

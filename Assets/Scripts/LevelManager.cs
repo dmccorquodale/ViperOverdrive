@@ -5,6 +5,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.InputSystem;
 
 using UnityEngine.SceneManagement;
+using System.Data.Common;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class LevelManager : MonoBehaviour
 
     [Header("Car")]
     [SerializeField] private Car Car;
+
+    [Header("Snake")]
+    [SerializeField] private GameObject snakeHead;
 
     [Header("TrackRoot")]
     [SerializeField] private GameObject trackRoot;
@@ -54,6 +58,39 @@ public class LevelManager : MonoBehaviour
         {
             ReturnToMainMenu();
         }
+
+        float time = levelTimer.GetTime();
+        SnakeHeadController shc = snakeHead.GetComponent<SnakeHeadController>();
+
+        if (time <= 5f)
+        {
+            Car.targetSpeedKmH = 20f;
+            shc.forwardSpeed = 15f;
+        }
+        else if (time > 5f && time <= 15f)
+        {
+            Car.targetSpeedKmH = 40f;
+            shc.forwardSpeed = 20f;
+        }
+        else if (time > 15f && time <= 30f)
+        {
+            Car.targetSpeedKmH = 50f;
+            shc.forwardSpeed = 25f;
+
+        }
+        else if (time > 30f && time <= 45f)
+        {
+            Car.targetSpeedKmH = 60f;
+            shc.forwardSpeed = 30f;
+
+        }
+        else if (time > 45f)
+        {
+            Car.targetSpeedKmH = 80f;
+            shc.forwardSpeed = 40f;
+        }
+
+        
     }
 
     public void SetSpawnPoint(Transform newSpawn)
