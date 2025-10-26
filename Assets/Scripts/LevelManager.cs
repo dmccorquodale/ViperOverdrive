@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.InputSystem;
 
 using UnityEngine.SceneManagement;
 
@@ -45,6 +46,14 @@ public class LevelManager : MonoBehaviour
     {
         gameOver = false;
         StartCoroutine(SpawnPlayerDelayed(3f));
+    }
+
+    void Update()
+    {
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            ReturnToMainMenu();
+        }
     }
 
     public void SetSpawnPoint(Transform newSpawn)
@@ -127,11 +136,20 @@ public class LevelManager : MonoBehaviour
     private void OnPlayerCrashed(GameObject player, Vector3 pos)
     {
         if (gameOver == true) return;
-        Debug.Log($"Game Over at {pos}");
+        // Debug.Log($"Game Over at {pos}");
         gameOver = true;
         levelTimer.OnPlayerDied();
 
         // Return to menu (or load a GameOver scene if you add one)
+        SceneManager.LoadScene(returnScene, LoadSceneMode.Single);
+    }
+    public void ReturnToMainMenu()
+    {
+        // Optional: stop timer, clean up, etc.
+        if (levelTimer != null)
+            levelTimer.OnPlayerDied();
+
+        // Debug.Log("Returning to Main Menu...");
         SceneManager.LoadScene(returnScene, LoadSceneMode.Single);
     }
 }
