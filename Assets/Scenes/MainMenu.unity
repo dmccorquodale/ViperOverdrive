@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df413bf7a2383964494b115458ddfe5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SegmentPool
-  segmentPrefab: {fileID: 1478628133570318318, guid: 6427b504215abd543af101fbeea28f43, type: 3}
+  segmentPrefab: {fileID: 1478628133570318318, guid: bba147d01a5a233498125d60553e30cf, type: 3}
   initial: 128
 --- !u!1 &630356525
 GameObject:
