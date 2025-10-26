@@ -1694,7 +1694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d28633f82ed5f44b269c6116e8f03a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
-  levelToLoad: TestLevel
+  levelToLoad: Level01
   highscoresText: {fileID: 360475618}
   startAction:
     m_Name: Start
