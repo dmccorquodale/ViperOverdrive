@@ -78,7 +78,7 @@ public class SnakeHeadController : MonoBehaviour
         
     public void ApplyPattern(float speed, float latAmp, float latWaveM, float vertAmp, float vertWaveM)
     {
-        forwardSpeed        = speed;
+        //forwardSpeed        = speed;
         lateralAmp          = latAmp;
         lateralWavelengthM  = latWaveM;
         verticalAmp         = vertAmp;

@@ -21,10 +21,12 @@ public class SnakePatternCycler : MonoBehaviour
     [Header("Presets (ordered)")]
     List<SnakePatternPreset> patterns = new()
     {
-        new SnakePatternPreset{ name="A", speed=15f, lateralAmp=16f, lateralWavelengthM=200f, verticalAmp=12f, verticalWavelengthM=300f },
-        new SnakePatternPreset{ name="B", speed=15f, lateralAmp=8f, lateralWavelengthM=200f, verticalAmp=11f, verticalWavelengthM=300f },
-        new SnakePatternPreset{ name="C", speed=15f, lateralAmp=24f, lateralWavelengthM=200f, verticalAmp=10f, verticalWavelengthM=300f },
-        new SnakePatternPreset{ name="C", speed=15f, lateralAmp=48f, lateralWavelengthM=200f, verticalAmp=8f, verticalWavelengthM=300f },
+        new SnakePatternPreset{ name="C", speed=1f, lateralAmp=20f, lateralWavelengthM=77f, verticalAmp=0f, verticalWavelengthM=162f },
+        new SnakePatternPreset{ name="B", speed=1f, lateralAmp=10f, lateralWavelengthM=77f, verticalAmp=5f, verticalWavelengthM=162f },
+        new SnakePatternPreset{ name="A", speed=1f, lateralAmp=0f, lateralWavelengthM=77f, verticalAmp=10f, verticalWavelengthM=162f },
+        //new SnakePatternPreset{ name="B", speed=15f, lateralAmp=8f, lateralWavelengthM=200f, verticalAmp=11f, verticalWavelengthM=300f },
+        //new SnakePatternPreset{ name="C", speed=15f, lateralAmp=24f, lateralWavelengthM=200f, verticalAmp=10f, verticalWavelengthM=300f },
+        //new SnakePatternPreset{ name="C", speed=15f, lateralAmp=48f, lateralWavelengthM=200f, verticalAmp=8f, verticalWavelengthM=300f },
         // Add a second preset to see cycling happen:
         // new SnakePatternPreset{ name="B", speed=16f, lateralAmp=16f, lateralWavelengthM=200f, verticalAmp=8f, verticalWavelengthM=300f },
     };
