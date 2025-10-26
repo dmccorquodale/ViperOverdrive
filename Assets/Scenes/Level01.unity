@@ -479,6 +479,10 @@ PrefabInstance:
       propertyPath: forwardSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1811823433713160856, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
+      propertyPath: lateralWavelengthM
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6361596545423105963, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -86.1272
