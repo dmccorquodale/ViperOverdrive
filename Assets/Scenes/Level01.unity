@@ -626,7 +626,7 @@ MonoBehaviour:
   trackParent: {fileID: 1583637719}
   segmentLength: 3
   maxAnglePerSegmentDeg: 8
-  maxActiveSegments: 300
+  maxActiveSegments: 3000
   gravityUpBias: 0.85
   maxSegmentsPerFrame: 64
 --- !u!114 &1583637718
