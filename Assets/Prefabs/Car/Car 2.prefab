@@ -81,6 +81,11 @@ MonoBehaviour:
   steeringWheel: {fileID: 269809520297006619}
   carEngineAduio: {fileID: 5428898527609741243}
   engineOn: 0
+  suspensions:
+  - {fileID: 9110820300324966608}
+  - {fileID: 7516097014273056274}
+  - {fileID: 2373515958717024005}
+  - {fileID: 3399301942309537927}
   acceleration: 24000
   targetSpeedKmH: 50
   currentSpeedKmH: 0

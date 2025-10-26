@@ -6,6 +6,7 @@ public class Car : MonoBehaviour
     public GameObject steeringWheel;
     public AudioSource carEngineAduio;
     public bool engineOn;
+    public GameObject[] suspensions;
 
     [Header("Engine")]
     public float acceleration;
@@ -49,7 +50,7 @@ public class Car : MonoBehaviour
         steeringInput = steeringWheel.GetComponent<SteeringWheelController>().SteeringSign;
 
         //throttle = move.ReadValue<Vector2>().y;
-        if (engineOn)
+        if (engineOn && AreWheelsTouchingGround())
         {
             if (currentSpeedKmH < targetSpeedKmH)
             {
@@ -78,5 +79,18 @@ public class Car : MonoBehaviour
     public void Go()
     {
         engineOn = true;
+    }
+
+    bool AreWheelsTouchingGround()
+    {
+        foreach (GameObject i in suspensions)
+        {
+            if (i.GetComponent<Suspension>().wheelTouchingGround)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
