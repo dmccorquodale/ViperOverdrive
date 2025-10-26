@@ -2390,6 +2390,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1811823433713160856, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
+      propertyPath: lateralAmp
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811823433713160856, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
+      propertyPath: verticalAmp
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811823433713160856, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
       propertyPath: forwardSpeed
       value: 20
       objectReference: {fileID: 0}
@@ -2398,8 +2406,12 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1811823433713160856, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
+      propertyPath: lateralWavelengthM
+      value: 315
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811823433713160856, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
       propertyPath: verticalWavelengthM
-      value: 340
+      value: 352
       objectReference: {fileID: 0}
     - target: {fileID: 2857306795304193300, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
       propertyPath: m_IsActive
