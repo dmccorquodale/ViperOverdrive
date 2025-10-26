@@ -79,8 +79,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SteeringWheelController
   wheelTransform: {fileID: 0}
   localSpinAxis: {x: 1, y: 0, z: 0}
-  invert: 0
+  invert: 1
   maxWheelAngle: 200
+  torquePerInput: 600
+  damping: 4
+  centerSpring: 0
+  stopFriction: 20
   rotateSmooth: 20
   steerAxis: {fileID: -7582355604591327790, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &7087030792946758007
