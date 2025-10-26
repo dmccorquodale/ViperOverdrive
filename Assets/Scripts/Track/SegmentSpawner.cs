@@ -8,7 +8,7 @@ public class SegmentSpawner : MonoBehaviour
     public Transform trackParent;         // usually this GameObject
     public float segmentLength = 3f;
     public float maxAnglePerSegmentDeg = 8f;
-    public int maxActiveSegments = 300;
+    public int maxActiveSegments = 3000;
     [Range(0f, 1f)] public float gravityUpBias = 0.85f;
 
     private SegmentPool pool;
