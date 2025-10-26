@@ -77,7 +77,7 @@ public class SteeringWheelController : MonoBehaviour
             if (Mouse.current.leftButton.wasPressedThisFrame && IsPointerOverWheel())
             {
                 dragging = true;
-                // do NOT zero angVel — you can grab a spinning wheel
+                angVel = 0f; // ← stop all momentum the instant you grab it
                 recentDragAngleAccum = 0f;
                 recentDragTime = 0f;
             }
