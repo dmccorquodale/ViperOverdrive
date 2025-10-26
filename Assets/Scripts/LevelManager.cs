@@ -71,7 +71,7 @@ public class LevelManager : MonoBehaviour
         }
 
         Car.targetSpeedKmH = time + 25f;
-        shc.forwardSpeed = time / 8f + 10.8f;
+        shc.forwardSpeed = time / 4f + 10.8f;
     }
 
     public void SetSpawnPoint(Transform newSpawn)
