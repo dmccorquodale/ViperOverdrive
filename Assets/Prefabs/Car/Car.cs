@@ -46,8 +46,8 @@ public class Car : MonoBehaviour
 
     void Update()
     {
-        //steeringInput = move.ReadValue<Vector2>().x;
-        steeringInput = steeringWheel.GetComponent<SteeringWheelController>().SteeringSign;
+        steeringInput = move.ReadValue<Vector2>().x;
+        //steeringInput = steeringWheel.GetComponent<SteeringWheelController>().SteeringSign;
 
         //throttle = move.ReadValue<Vector2>().y;
         if (engineOn && AreWheelsTouchingGround())
