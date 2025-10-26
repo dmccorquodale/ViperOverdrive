@@ -62,35 +62,16 @@ public class LevelManager : MonoBehaviour
         float time = levelTimer.GetTime();
         SnakeHeadController shc = snakeHead.GetComponent<SnakeHeadController>();
 
+        if (Car == null) return;
         if (time <= 5f)
         {
-            Car.targetSpeedKmH = 20f;
-            shc.forwardSpeed = 15f;
-        }
-        else if (time > 5f && time <= 15f)
-        {
-            Car.targetSpeedKmH = 40f;
-            shc.forwardSpeed = 20f;
-        }
-        else if (time > 15f && time <= 30f)
-        {
-            Car.targetSpeedKmH = 50f;
-            shc.forwardSpeed = 25f;
-
-        }
-        else if (time > 30f && time <= 45f)
-        {
-            Car.targetSpeedKmH = 60f;
-            shc.forwardSpeed = 30f;
-
-        }
-        else if (time > 45f)
-        {
-            Car.targetSpeedKmH = 80f;
-            shc.forwardSpeed = 40f;
+            Car.targetSpeedKmH = 30f;
+            shc.forwardSpeed = 12f;
+            return;
         }
 
-        
+        Car.targetSpeedKmH = time + 25f;
+        shc.forwardSpeed = time / 8f + 10.8f;
     }
 
     public void SetSpawnPoint(Transform newSpawn)
