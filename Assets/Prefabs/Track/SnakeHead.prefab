@@ -677,6 +677,7 @@ GameObject:
   - component: {fileID: 6361596545423105963}
   - component: {fileID: 1811823433713160856}
   - component: {fileID: 2460052686220188468}
+  - component: {fileID: 7877098479897780177}
   m_Layer: 0
   m_Name: SnakeHead
   m_TagString: Untagged
@@ -739,3 +740,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PathSampler
   sampleSpacing: 0.2
   maxSamples: 4096
+  warmupSeconds: 0.05
+  teleportThreshold: 5
+--- !u!114 &7877098479897780177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7391874444324417106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3020930a80eb4184692f879cb3c9ddb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnakePatternCycler
+  target: {fileID: 1811823433713160856}
+  patterns:
+  - name: A
+    speed: 20
+    lateralAmp: 20
+    lateralWavelengthM: 200
+    verticalAmp: 16
+    verticalWavelengthM: 100
+  - name: B
+    speed: 20
+    lateralAmp: 10
+    lateralWavelengthM: 80
+    verticalAmp: 16
+    verticalWavelengthM: 100
+  - name: C
+    speed: 20
+    lateralAmp: 20
+    lateralWavelengthM: 200
+    verticalAmp: 16
+    verticalWavelengthM: 100
+  intervalSeconds: 10
+  blendSeconds: 1.5
+  randomOrder: 0
+  startIndex: 0
+  playOnStart: 1

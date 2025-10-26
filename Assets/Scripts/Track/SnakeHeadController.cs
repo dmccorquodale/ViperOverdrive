@@ -46,7 +46,7 @@ public class SnakeHeadController : MonoBehaviour
         float dz = forwardSpeed * dt;
         sMeters += dz;
 
-        float kLat = (lateralWavelengthM  > 0.001f) ? (Mathf.PI * 2f / lateralWavelengthM)  : 0f;
+        float kLat = (lateralWavelengthM > 0.001f) ? (Mathf.PI * 2f / lateralWavelengthM) : 0f;
         float kVert = (verticalWavelengthM > 0.001f) ? (Mathf.PI * 2f / verticalWavelengthM) : 0f;
 
         // apply the random phase offsets
@@ -55,7 +55,7 @@ public class SnakeHeadController : MonoBehaviour
         float z = sMeters;
 
         Vector3 newPos = startPos + new Vector3(x, y - baseY, z);
-        
+
         if (!initialized)
         {
             transform.position = newPos;
@@ -74,5 +74,14 @@ public class SnakeHeadController : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
 
         lastPos = newPos;
+    }
+        
+    public void ApplyPattern(float speed, float latAmp, float latWaveM, float vertAmp, float vertWaveM)
+    {
+        forwardSpeed        = speed;
+        lateralAmp          = latAmp;
+        lateralWavelengthM  = latWaveM;
+        verticalAmp         = vertAmp;
+        verticalWavelengthM = vertWaveM;
     }
 }

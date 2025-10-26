@@ -481,7 +481,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1811823433713160856, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
       propertyPath: lateralWavelengthM
-      value: 100
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811823433713160856, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
+      propertyPath: verticalWavelengthM
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6361596545423105963, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -526,6 +530,10 @@ PrefabInstance:
     - target: {fileID: 7391874444324417106, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
       propertyPath: m_Name
       value: SnakeHead
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877098479897780177, guid: 7e45222caf7de254a9da059d07753a3c, type: 3}
+      propertyPath: intervalSeconds
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -843,9 +851,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7032860150372010576, guid: 38b17753fe0eb0e4a8e11dd843cd7e15, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 774324250873932597, guid: 38b17753fe0eb0e4a8e11dd843cd7e15, type: 3}
       propertyPath: m_Name
       value: HandCursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 774324250873932597, guid: 38b17753fe0eb0e4a8e11dd843cd7e15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4178927515193310787, guid: 38b17753fe0eb0e4a8e11dd843cd7e15, type: 3}
       propertyPath: m_LocalPosition.x
