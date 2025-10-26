@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1135491059373952611}
   - component: {fileID: 8104161659577560956}
+  - component: {fileID: 7748174116231992659}
   m_Layer: 0
   m_Name: steeringWheel
   m_TagString: Untagged
@@ -79,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SteeringWheelController
   wheelTransform: {fileID: 0}
   localSpinAxis: {x: 1, y: 0, z: 0}
-  invert: 1
+  invertVisual: 0
   maxWheelAngle: 200
   torquePerInput: 600
   damping: 4
@@ -87,6 +88,35 @@ MonoBehaviour:
   stopFriction: 20
   rotateSmooth: 20
   steerAxis: {fileID: -7582355604591327790, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  inputCamera: {fileID: 0}
+  wheelMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  dragDegreesPerPixel: 0.25
+  releaseInertia: 1
+  invertDrag: 1
+  invertKeys: 1
+--- !u!65 &7748174116231992659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4972556797328537785}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7087030792946758007
 GameObject:
   m_ObjectHideFlags: 0
