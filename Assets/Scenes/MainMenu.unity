@@ -1881,7 +1881,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press Space to Start
+  m_text: 'Click anywhere to start!
 
     Turn the wheel by clicking and dragging!'
   m_isRightToLeft: 0

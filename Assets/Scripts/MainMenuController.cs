@@ -24,6 +24,7 @@ public class MainMenuController : MonoBehaviour
             startAction.AddBinding("<Keyboard>/enter");
             startAction.AddBinding("<Gamepad>/buttonSouth"); // A / Cross
             startAction.AddBinding("<Gamepad>/start");
+            startAction.AddBinding("<Mouse>/leftButton"); 
         }
 
         startAction.Enable();
