@@ -18,6 +18,9 @@ public class SnakePatternCycler : MonoBehaviour
     [Header("Target")]
     public SnakeHeadController target;
 
+    private SnakePatternPreset starterPattern = new SnakePatternPreset { name = "Starter", speed = 1f, lateralAmp = 1f, lateralWavelengthM = 77f, verticalAmp = 1f, verticalWavelengthM = 162f };
+
+
     [Header("Presets (ordered)")]
     List<SnakePatternPreset> patterns = new()
     {
@@ -44,6 +47,8 @@ public class SnakePatternCycler : MonoBehaviour
     [Tooltip("If true and you only have one preset, it will still re-apply it every interval (mostly for testing).")]
     public bool loopSinglePreset = false;
 
+    private bool firstIndex = true;
+
     int _index = 0;
     Coroutine _runner;
 
@@ -67,7 +72,8 @@ public class SnakePatternCycler : MonoBehaviour
         _index = Mathf.Clamp(startIndex, 0, patterns.Count - 1);
 
         // ✅ Apply initial preset once so values on SnakeHeadController update immediately
-        ApplyToTarget(patterns[_index]);
+        // ApplyToTarget(patterns[_index]);
+        ApplyToTarget(starterPattern);
 
         if (!playOnStart) return;
 
@@ -109,6 +115,12 @@ public class SnakePatternCycler : MonoBehaviour
 
             var from = patterns[_index];
             var to   = patterns[next];
+            if (firstIndex)
+            {
+                from = starterPattern;
+                // to   = starterPattern;
+                firstIndex = false;
+            }
 
             // If single preset & not looping single, just wait and continue
             if (next == _index && patterns.Count == 1 && !loopSinglePreset)
