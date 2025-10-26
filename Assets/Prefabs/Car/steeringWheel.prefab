@@ -84,7 +84,7 @@ MonoBehaviour:
   maxWheelAngle: 1000
   momentOfInertia: 1500
   inputDamping: 0.6
-  freeSpinDamping: 0.02
+  freeSpinDamping: 3
   centerSpring: 0
   stopFriction: 0
   maxAngVel: 1200
@@ -95,7 +95,7 @@ MonoBehaviour:
   wheelMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  dragDegreesPerPixel: 0.25
+  dragDegreesPerPixel: 0.01
   releaseInertia: 1
   invertDrag: 1
   injectGainWhileDragging: 0.75
