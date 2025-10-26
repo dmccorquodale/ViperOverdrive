@@ -6,7 +6,7 @@ public class SteeringWheelController : MonoBehaviour
     [Header("Target")]
     [SerializeField] private Transform wheelTransform;                  // rotates this; defaults to self
     [SerializeField] private Vector3 localSpinAxis = new Vector3(0,0,1);// local axis to spin around
-    [SerializeField] private bool invertVisual = false;                 // flip visual only
+    [SerializeField] private bool invertVisual = false;                 // flips ONLY the mesh rotation
 
     [Header("Limits")]
     [SerializeField] private float maxWheelAngle = 200f;                // deg, each side
@@ -28,8 +28,7 @@ public class SteeringWheelController : MonoBehaviour
     [SerializeField] private LayerMask wheelMask = ~0;                  // set to wheel layer or leave Everything
     [SerializeField] private float dragDegreesPerPixel = 0.25f;         // horizontal pixels -> degrees
     [SerializeField, Range(0f,1f)] private float releaseInertia = 1f;   // how much angVel to keep on release
-    [SerializeField] private bool invertDrag = false;                   // flip mouse drag direction
-    [SerializeField] private bool invertKeys = false;                   // flip keyboard direction
+    [SerializeField] private bool invertDrag = false;                   // flips mouse drag direction
 
     private bool dragging;
 
@@ -54,9 +53,7 @@ public class SteeringWheelController : MonoBehaviour
 
     private void Update()
     {
-        float input = steerAxis ? steerAxis.action.ReadValue<float>() : 0f;
-        if (invertKeys) input = -input;
-
+        float input = steerAxis ? steerAxis.action.ReadValue<float>() : 0f; // -1..1
         float dt = Time.deltaTime;
 
         // ---------- Mouse drag ----------
@@ -74,12 +71,15 @@ public class SteeringWheelController : MonoBehaviour
             if (dragging)
             {
                 float dx = Mouse.current.delta.ReadValue().x;
-                float dragSign = invertDrag ? -1f : 1f;
-                angle += dx * dragDegreesPerPixel * dragSign;
+
+                // drag direction follows visual flip, so A/D and drag match visually
+                float dragVisualSign = (invertDrag ? -1f : 1f) * (invertVisual ? -1f : 1f);
+
+                angle += dx * dragDegreesPerPixel * dragVisualSign;
             }
         }
 
-        // ---- “cumbersome” steering physics ----
+        // ---- steering physics (keyboard/gamepad heaviness) ----
         float torque = input * torquePerInput;
         float dampingTorque = -angVel * damping;
         float springTorque  = -angle * centerSpring;
@@ -98,9 +98,9 @@ public class SteeringWheelController : MonoBehaviour
             if (Mathf.Sign(angVel) == Mathf.Sign(angle)) angVel = 0f;
         }
 
-        // ---- visuals ----
+        // ---- visuals (flip here only) ----
         visualAngle = Mathf.Lerp(visualAngle, angle, 1f - Mathf.Exp(-rotateSmooth * dt));
-        float visualSign = invertVisual ? -1f : 1f;
+        float visualSign = invertVisual ? -1f : 1f;         // flips ONLY the mesh
         Quaternion rot = Quaternion.AngleAxis(visualSign * visualAngle, localSpinAxis);
         wheelTransform.localRotation = initialLocalRot * rot;
     }
@@ -115,7 +115,7 @@ public class SteeringWheelController : MonoBehaviour
         return hit.transform == wheelTransform || hit.transform.IsChildOf(wheelTransform);
     }
 
-    // Outputs for the car
+    // Outputs for the car (unaffected by visual or drag inversion)
     public float Steering01   => Mathf.InverseLerp(-maxWheelAngle, maxWheelAngle, angle);
     public float SteeringSign => Mathf.Clamp(angle / maxWheelAngle, -1f, 1f);
 }
