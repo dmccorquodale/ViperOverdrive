@@ -26,6 +26,8 @@ public class GameController : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         LoadScores();
+
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public bool TrySubmitScore(float seconds)
