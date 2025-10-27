@@ -499,14 +499,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1267545624599424724, guid: d7770da8b81a76345af9b6c4344e5a89, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.171
-      objectReference: {fileID: 0}
-    - target: {fileID: 1267545624599424724, guid: d7770da8b81a76345af9b6c4344e5a89, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.976
-      objectReference: {fileID: 0}
     - target: {fileID: 2609087170775845947, guid: d7770da8b81a76345af9b6c4344e5a89, type: 3}
       propertyPath: m_Enabled
       value: 0
