@@ -20,6 +20,6 @@ public class Speedo : MonoBehaviour
             frameCounter += Time.deltaTime;
         }
 
-        Debug.Log(frameCounter);
+        //Debug.Log(frameCounter);
     }
 }
